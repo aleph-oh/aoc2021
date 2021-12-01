@@ -1,18 +1,4 @@
-use std::io::{self, BufRead};
-
-fn parse_input() -> Vec<i64> {
-    // This works, but uses linear extra space. You can do it in constant extra space.
-    let stdin = io::stdin();
-    let mut results = Vec::new();
-    let mut iter = stdin.lock().lines();
-    while let Some(n) = iter
-        .next()
-        .and_then(|line| line.expect("Failed to get line").parse().ok())
-    {
-        results.push(n);
-    }
-    results
-}
+use crate::utils::{input, parse_input};
 
 fn num_increases(xs: &[i64]) -> usize {
     // Special case w/ windows where we want to see adjacent pairs -> size-1 adjacent windows
@@ -29,6 +15,6 @@ fn num_k_window_increases(xs: &[i64], k: usize) -> usize {
 }
 
 pub fn solve() -> (usize, usize) {
-    let v = parse_input();
+    let v = parse_input(&input());
     (num_increases(&v), num_k_window_increases(&v, 3))
 }

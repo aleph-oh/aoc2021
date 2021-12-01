@@ -1,4 +1,5 @@
 mod day1;
+mod utils;
 
 const DAY: usize = 1;
 
