@@ -4,8 +4,7 @@ mod utils;
 
 fn main() {
     let day = std::env::args()
-        .skip(1)
-        .next()
+        .nth(1)
         .expect("Expected one argument for day")
         .parse::<u8>()
         .expect("Could not parse provided day as u8");
