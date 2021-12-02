@@ -112,8 +112,8 @@ fn make_moves_no_aim(moves: &[Move]) -> Position {
     Position { x, y }
 }
 
-fn make_moves_aim(moves: &[Move]) -> Position {
-    let aim_pos = moves
+fn make_moves_aim(moves: &[Move]) -> AimPosition {
+    moves
         .iter()
         .fold(AimPosition::new(), |acc, mv| match mv.dir {
             Direction::Forward => AimPosition {
@@ -126,13 +126,12 @@ fn make_moves_aim(moves: &[Move]) -> Position {
                 y: acc.y,
                 aim: acc.aim + mv.dy(),
             },
-        });
-    Position::from(aim_pos)
+        })
 }
 
 pub(crate) fn solve() -> (i64, i64) {
     let v = parse_input(&input());
     let pos = make_moves_no_aim(&v);
-    let aim_pos = make_moves_aim(&v);
+    let aim_pos = Position::from(make_moves_aim(&v));
     (pos.x * pos.y, aim_pos.x * aim_pos.y)
 }
