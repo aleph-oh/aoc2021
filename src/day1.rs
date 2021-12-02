@@ -14,7 +14,10 @@ fn num_k_window_increases(xs: &[i64], k: usize) -> usize {
         .sum()
 }
 
-pub fn solve() -> (usize, usize) {
+pub(crate) fn solve() -> (i64, i64) {
     let v = parse_input(&input());
-    (num_increases(&v), num_k_window_increases(&v, 3))
+    (
+        num_increases(&v) as i64,
+        num_k_window_increases(&v, 3) as i64,
+    )
 }
