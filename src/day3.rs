@@ -8,7 +8,7 @@ type BitArray = [bool; MAX_NUM_BITS];
 fn vector_bits_set(v: &[u16]) -> [u64; MAX_NUM_BITS] {
     v.iter().fold([0u64; MAX_NUM_BITS], |mut acc, &n| {
         for (i, item) in acc.iter_mut().enumerate().take(MAX_NUM_BITS) {
-            let b = ((n & (1 << i)) >> i) as u64;
+            let b = get_bit(n, i as u8) as u64;
             assert!((b == 0) | (b == 1), "{}", b);
             *item += b;
         }

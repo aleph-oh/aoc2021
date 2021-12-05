@@ -1,7 +1,8 @@
+mod utils;
 mod day1;
 mod day2;
 mod day3;
-mod utils;
+mod day4;
 
 fn main() {
     let day = std::env::args()
