@@ -1,6 +1,5 @@
-use crate::utils::{input};
+use crate::utils::input;
 use std::collections::HashMap;
-
 
 fn simulate(inputs: [u64; 9], n_days: u16) -> i64 {
     let mut all_fish: [u64; 9] = inputs;
@@ -17,17 +16,25 @@ fn simulate(inputs: [u64; 9], n_days: u16) -> i64 {
 
 pub(crate) fn solve() -> (i64, i64) {
     let inputs = input();
-    let parsed_inputs =
-        inputs.trim().split(',').map(str::parse).collect::<Result<Vec<u8>, _>>()
-            .expect("Failed to parse input...");
-    let frequencies: HashMap<u8, u64> = parsed_inputs.into_iter()
-        .fold(HashMap::new(), |mut map, x| {
-            *map.entry(x).or_default() += 1;
-            map
-        });
+    let parsed_inputs = inputs
+        .trim()
+        .split(',')
+        .map(str::parse)
+        .collect::<Result<Vec<u8>, _>>()
+        .expect("Failed to parse input...");
+    let frequencies: HashMap<u8, u64> =
+        parsed_inputs
+            .into_iter()
+            .fold(HashMap::new(), |mut map, x| {
+                *map.entry(x).or_default() += 1;
+                map
+            });
     let mut fish_frequencies = [0u64; 9];
     for (i, n) in frequencies {
         fish_frequencies[i as usize] = n;
     }
-    (simulate(fish_frequencies, 80), simulate(fish_frequencies, 256))
+    (
+        simulate(fish_frequencies, 80),
+        simulate(fish_frequencies, 256),
+    )
 }
