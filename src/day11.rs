@@ -1,6 +1,5 @@
 use crate::utils::input;
 use std::collections::VecDeque;
-use std::mem;
 
 #[repr(packed)]
 #[derive(Copy, Clone)]
