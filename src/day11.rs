@@ -103,11 +103,14 @@ pub(crate) fn solve() -> (i64, i64) {
         .flat_map(|line| line.chars().map(|ch| ch.to_digit(10).unwrap() as u8))
         .collect();
     let mut board = Board {
-        grid: cells.into_iter().map(|n| Octopus { energy: n, flashed: false}).collect()
+        grid: cells
+            .into_iter()
+            .map(|n| Octopus {
+                energy: n,
+                flashed: false,
+            })
+            .collect(),
     };
     let mut copy = board.clone();
-    (
-        part_one(&mut board, 100),
-        part_two(&mut copy)
-    )
+    (part_one(&mut board, 100), part_two(&mut copy))
 }
