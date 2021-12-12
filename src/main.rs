@@ -2,6 +2,7 @@
 
 mod day1;
 mod day10;
+mod day11;
 mod day2;
 mod day3;
 mod day4;
@@ -27,6 +28,7 @@ fn main() {
         7 => day7::solve(),
         9 => day9::solve(),
         10 => day10::solve(),
+        11 => day11::solve(),
         _ => panic!(),
     };
     println!("Day {} | Part 1 {} | Part 2 {}", day, pt1, pt2);
